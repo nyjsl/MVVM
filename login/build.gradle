@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         if (isRunAlone.toBoolean()) {
-            applicationId "org.nyjsl.zeus"
+            applicationId "org.nyjsl.zeus.login"
         }
         versionCode 1
     }
@@ -24,7 +24,7 @@ android {
         }
     }
 
-    resourcePrefix "app_"
+    resourcePrefix "login_"
 
     buildTypes {
         release {
@@ -39,5 +39,6 @@ apply from: '../config.gradle'
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':theme')
+
 
 }

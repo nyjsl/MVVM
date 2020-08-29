@@ -1,2 +1,4 @@
+include ':theme'
+include ':login'
 include ':app'
 rootProject.name = "MVVM"

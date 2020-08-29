@@ -1,0 +1,31 @@
+apply plugin: 'com.starter.library.android'
+
+android {
+
+    defaultConfig {
+        versionCode 1
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+apply from: '../config.gradle'
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api deps.androidX.appcompat
+    api deps.androidX.materialDesign
+    api deps.androidX.constraintlayout
+
+}
