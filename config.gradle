@@ -4,6 +4,8 @@ ext.versions = [
         androidX                 : '1.2.0',
         autoSize                 : '1.1.2',
         constraintlayout         : '2.0.0',
+        utils                    : '1.25.9',
+
 
 ]
 ext.deps = [
@@ -16,5 +18,7 @@ ext.deps = [
                 constraintlayout: "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
         ],
         autoSize            : "me.jessyan:autosize:${versions.autoSize}",
+        utils                    : "com.blankj:utilcode:$versions.utils",
+
 
 ]
