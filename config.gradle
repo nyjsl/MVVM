@@ -7,6 +7,8 @@ ext.versions = [
         utils                    : '1.25.9',
         rxjava2                  : '2.2.16',
         rxAndroid                : '2.1.1',
+        retrofit                 : '2.9.0',
+        room                     : '2.2.5',
 
 ]
 ext.deps = [
@@ -22,7 +24,11 @@ ext.deps = [
         utils               : "com.blankj:utilcode:$versions.utils",
         rxjava2             : "io.reactivex.rxjava2:rxjava:$versions.rxjava2",
         rxAndroid           : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
-
+        retrofit           : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitAdapterRxjava2: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+        retrofitConverterGson : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        room               :"androidx.room:room-runtime:$versions.room",
+        roomCompiler       :"androidx.room:room-compiler:$versions.room",
 
 
 ]
