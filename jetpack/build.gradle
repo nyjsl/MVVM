@@ -32,5 +32,7 @@ dependencies {
     api deps.androidX.materialDesign
     api deps.androidX.constraintlayout
     api deps.utils
+    api deps.rxjava2
+    api deps.rxAndroid
 
 }
