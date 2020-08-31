@@ -3,10 +3,13 @@ package org.nyjsl.jetpack.mvvm.base;
 import com.blankj.utilcode.util.Utils;
 
 import org.nyjsl.jetpack.mvvm.base.lifecycle.BaseViewModel;
+import org.nyjsl.jetpack.mvvm.base.lifecycle.RepoViewModelFactory;
+import org.nyjsl.network.repository.BaseRepository;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,15 +22,20 @@ extends BaseNoVMActivity<DataBinding>{
     
     protected VM viewModel;
 
+    protected BaseRepository baseRepository;
+
     @Override
     protected DataBinding initDataBinding(int layoutId) {
         DataBinding dataBinding = super.initDataBinding(layoutId);
+        this.baseRepository = getBaseRepository();
         viewModel = initViewModel(getViewModelClass());
         return dataBinding;
     }
 
+    protected abstract @NonNull BaseRepository getBaseRepository();
+
     private VM initViewModel(Class<VM> klazz){
-        return ViewModelProvider.AndroidViewModelFactory.getInstance(Utils.getApp()).create(klazz);
+        return RepoViewModelFactory.getInstance(baseRepository).create(klazz);
     }
 
     private Class<VM> getViewModelClass(){

@@ -1,5 +1,7 @@
 package org.nyjsl.jetpack.mvvm.base.lifecycle;
 
+import org.nyjsl.network.repository.BaseRepository;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
@@ -9,7 +11,12 @@ import io.reactivex.disposables.Disposable;
  * @author : weixing
  * @date : 2020/8/30 1:51 PM
  */
-public abstract class BaseViewModel<D> extends ViewModel {
+public abstract class BaseViewModel extends ViewModel {
+
+
+    public BaseViewModel(BaseRepository repository) {
+        this.repository = repository;
+    }
 
     /**
      * 管理RxJava请求
@@ -38,13 +45,9 @@ public abstract class BaseViewModel<D> extends ViewModel {
         }
     }
 
+    private final BaseRepository repository;
 
-    private MutableLiveData<D> data = new MutableLiveData<>();
 
-
-    public MutableLiveData<D> getData() {
-        return data;
-    }
 
 
 }
