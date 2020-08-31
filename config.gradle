@@ -9,7 +9,8 @@ ext.versions = [
         rxAndroid                : '2.1.1',
         retrofit                 : '2.9.0',
         room                     : '2.2.5',
-        okhttp3Logging          : '3.8.0',
+        okhttp3Logging           : '3.8.0',
+        mmkv                     : '1.2.2',
 
 
 ]
@@ -32,6 +33,7 @@ ext.deps = [
         room               :"androidx.room:room-runtime:$versions.room",
         roomCompiler       :"androidx.room:room-compiler:$versions.room",
         okhttp3Logging      : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3Logging",
+        mmkv                : "com.tencent:mmkv-static:$versions.mmkv"
 
 
 

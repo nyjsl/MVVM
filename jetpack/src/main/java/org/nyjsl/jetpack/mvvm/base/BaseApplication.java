@@ -3,6 +3,7 @@ package org.nyjsl.jetpack.mvvm.base;
 import android.app.Application;
 
 import com.blankj.utilcode.util.Utils;
+import com.tencent.mmkv.MMKV;
 
 import org.nyjsl.network.retrofit.RetrofitConfig;
 import org.nyjsl.network.retrofit.RetrofitManager;
@@ -20,6 +21,7 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Utils.init(this);
+        MMKV.initialize(this);
         initRetrofitManager();
     }
 
