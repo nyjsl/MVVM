@@ -24,6 +24,8 @@ apply from: '../config.gradle'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    api deps.androidX.appcompat
+    api deps.utils
     api deps.rxjava2
     api deps.rxAndroid
     api deps.retrofit
