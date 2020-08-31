@@ -41,13 +41,11 @@ public class RetrofitManager {
 
     /**
      * 初始化RetrofitManager
-     * @param interceptors
-     * @param networkInterceptors
      */
-    public void init(List<Interceptor> interceptors,List<Interceptor> networkInterceptors,boolean debug){
-        this.interceptors = interceptors;
-        this.networkInterceptors = networkInterceptors;
-        this.debug = debug;
+    public void init(RetrofitConfig retrofitConfig){
+        this.interceptors = retrofitConfig.getInterceptors();
+        this.networkInterceptors = retrofitConfig.getNetworkInterceptors();
+        this.debug = retrofitConfig.isDebug();
     }
 
     private static class RetrofitManagerInstance {

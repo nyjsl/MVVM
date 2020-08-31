@@ -11,7 +11,6 @@ import java.lang.reflect.Type;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.ViewModelProvider;
 
 /**
  * @author : weixing
