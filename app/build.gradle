@@ -43,5 +43,6 @@ apply from: '../config.gradle'
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':theme')
+    implementation project(':network')
 
 }

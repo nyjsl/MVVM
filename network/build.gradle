@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 apply from: '../config.gradle'
@@ -29,8 +33,8 @@ dependencies {
     api deps.rxjava2
     api deps.rxAndroid
     api deps.retrofit
-    api deps.retrofitAdapterRxjava2
     api deps.retrofitConverterGson
+    api deps.okhttp3Logging
     api deps.room
     annotationProcessor deps.roomCompiler
 

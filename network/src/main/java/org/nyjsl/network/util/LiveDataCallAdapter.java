@@ -16,7 +16,8 @@
 
 package org.nyjsl.network.util;
 
-import com.android.example.github.api.ApiResponse;
+
+import org.nyjsl.network.vo.ApiResponse;
 
 import java.lang.reflect.Type;
 import java.util.concurrent.atomic.AtomicBoolean;
