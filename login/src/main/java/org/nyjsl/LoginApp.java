@@ -14,10 +14,15 @@ import androidx.annotation.NonNull;
  */
 public class LoginApp extends BaseApplication {
 
+    @Override
+    protected boolean isDebug() {
+        return BuildConfig.DEBUG;
+    }
+
     @NonNull
     @Override
     protected RetrofitConfig getRetrofConfig() {
-        return CommonRetrofitConfig.getInstance(BuildConfig.DEBUG);
+        return CommonRetrofitConfig.getInstance(isDebug());
     }
 
 

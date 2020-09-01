@@ -9,7 +9,12 @@ public  interface RouterPath {
 
     interface Login{
 
+        String LOGIN_ACT = "/login/loginActivity";
 
+    }
+    interface HOME{
+
+        String HOME_ACT = "/home/homeActivity";
 
     }
 

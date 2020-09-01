@@ -19,8 +19,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -35,7 +35,7 @@ dependencies {
     api deps.rxjava2
     api deps.rxAndroid
     api deps.mmkv
-    api deps.vmRouter
+    api deps.aRouter
     api project(path: ':network')
 
 

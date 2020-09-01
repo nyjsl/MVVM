@@ -1,49 +1,20 @@
 package org.nyjsl.jetpack.mvvm.base;
 
-import com.blankj.utilcode.util.Utils;
+import android.os.Bundle;
 
-import org.nyjsl.jetpack.mvvm.base.lifecycle.BaseViewModel;
-import org.nyjsl.jetpack.mvvm.base.lifecycle.RepoViewModelFactory;
-import org.nyjsl.network.repository.BaseRepository;
+import com.alibaba.android.arouter.launcher.ARouter;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.ViewDataBinding;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author : weixing
- * @date : 2020/8/29 2:35 PM
+ * @date : 2020/9/1 6:31 PM
  */
-public abstract class BaseActivity<VM extends BaseViewModel,DataBinding extends ViewDataBinding>
-extends BaseNoVMActivity<DataBinding>{
-    
-    protected VM viewModel;
-
-    protected BaseRepository baseRepository;
-
+public abstract class BaseActivity extends AppCompatActivity {
     @Override
-    protected DataBinding initDataBinding(int layoutId) {
-        DataBinding dataBinding = super.initDataBinding(layoutId);
-        this.baseRepository = getBaseRepository();
-        viewModel = initViewModel(getViewModelClass());
-        return dataBinding;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ARouter.getInstance().inject(this);
     }
-
-    protected abstract @NonNull BaseRepository getBaseRepository();
-
-    private VM initViewModel(Class<VM> klazz){
-        return RepoViewModelFactory.getInstance(baseRepository).create(klazz);
-    }
-
-    private Class<VM> getViewModelClass(){
-        //TODO 需要验证
-        ParameterizedType parametclass = (ParameterizedType) this.getClass().getGenericSuperclass();
-        Type[] actualTypeArguments = parametclass.getActualTypeArguments();
-        Class<VM> result = (Class<VM>) actualTypeArguments[0];
-        return result;
-    }
-
-
 }

@@ -2,9 +2,8 @@ package org.nyjsl.jetpack.mvvm.base;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
-import com.sankuai.waimai.router.Router;
-import com.sankuai.waimai.router.common.DefaultRootUriHandler;
 import com.tencent.mmkv.MMKV;
 
 import org.nyjsl.network.retrofit.RetrofitConfig;
@@ -25,19 +24,33 @@ public abstract class BaseApplication extends Application {
         Utils.init(this);
         MMKV.initialize(this);
         initRetrofitManager();
-        initVMRouter();
+        initARouter();
+        initLogger(isDebug());
     }
 
-    private void initVMRouter() {
-        // 创建RootHandler
-        DefaultRootUriHandler rootHandler = new DefaultRootUriHandler(this);
-        // 初始化
-        Router.init(rootHandler);
+    private void initARouter() {
+        if (isDebug()) {
+            // 打印日志
+            ARouter.openLog();
+            // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+            ARouter.openDebug();
+        }
+        // 尽可能早，推荐在Application中初始化
+        ARouter.init(this);
+
     }
 
     protected void initRetrofitManager(){
         RetrofitManager.getInstance().init(getRetrofConfig());
     }
+
+    private void initLogger(boolean debug){
+        if (debug) {
+
+        }
+    }
+
+    protected abstract boolean isDebug();
 
     protected abstract @NonNull RetrofitConfig getRetrofConfig();
 }

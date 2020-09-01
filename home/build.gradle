@@ -1,6 +1,5 @@
 if (isRunAlone.toBoolean()) {
     apply plugin: 'com.starter.application.android'
-    apply plugin: 'WMRouter'
 } else {
     apply plugin: 'com.starter.library.android'
 }
@@ -13,6 +12,12 @@ android {
             applicationId "org.nyjsl.zeus.login"
         }
         versionCode 1
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     sourceSets {
@@ -34,8 +39,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -45,7 +50,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':common')
     annotationProcessor deps.roomCompiler
-    annotationProcessor deps.vmRouterCompiler
+    annotationProcessor deps.aRouterCompiler
 
 
 }

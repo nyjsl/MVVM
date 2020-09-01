@@ -1,6 +1,5 @@
 if (isRunAlone.toBoolean()) {
     apply plugin: 'com.starter.application.android'
-    apply plugin: 'WMRouter'
 } else {
     apply plugin: 'com.starter.library.android'
 }
@@ -34,8 +33,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -45,6 +44,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':common')
     annotationProcessor deps.roomCompiler
-    annotationProcessor deps.vmRouterCompiler
+    annotationProcessor deps.aRouterCompiler
 
 }
