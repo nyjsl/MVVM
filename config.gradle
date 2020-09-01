@@ -11,6 +11,7 @@ ext.versions = [
         room                     : '2.2.5',
         okhttp3Logging           : '3.8.0',
         mmkv                     : '1.2.2',
+        wmRouter                 : '1.2.0',
 
 
 ]
@@ -33,7 +34,9 @@ ext.deps = [
         room               :"androidx.room:room-runtime:$versions.room",
         roomCompiler       :"androidx.room:room-compiler:$versions.room",
         okhttp3Logging      : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3Logging",
-        mmkv                : "com.tencent:mmkv-static:$versions.mmkv"
+        mmkv                : "com.tencent:mmkv-static:$versions.mmkv",
+        vmRouter            : "com.sankuai.waimai.router:router:$versions.wmRouter",
+        vmRouterCompiler     : "com.sankuai.waimai.router:compiler:$versions.wmRouter",
 
 
 

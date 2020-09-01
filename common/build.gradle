@@ -31,5 +31,7 @@ dependencies {
     api deps.androidX.appcompat
     api deps.androidX.materialDesign
     api deps.androidX.constraintlayout
+    api project(path: ':jetpack')
+
 
 }

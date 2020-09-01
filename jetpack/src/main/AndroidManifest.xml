@@ -1,4 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.nyjsl.jetpack">
 
+    <application>
+
+        <activity
+            android:name=".router.UriProxyActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 接收所有scheme为demo的外部URI跳转，不区分host和path -->
+                <data android:scheme="zeus" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
 </manifest>

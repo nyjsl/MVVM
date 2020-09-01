@@ -1,4 +1,4 @@
-package org.nyjsl;
+package org.nyjsl.common.config;
 
 import android.os.Build;
 
@@ -6,7 +6,6 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.DeviceUtils;
 
 import org.nyjsl.network.interceptors.BasicParamsIntercptor;
-import org.nyjsl.theme.ParamsKey;
 
 import java.util.HashMap;
 
@@ -16,7 +15,7 @@ import androidx.annotation.NonNull;
  * @author : weixing
  * @date : 2020/8/31 4:57 PM
  */
-public final class LoginAppParamInterceptor extends BasicParamsIntercptor {
+public final class CommonParamInterceptor extends BasicParamsIntercptor {
 
     /**
      * 系统：1、IOS ,2、安卓 ,3、其它
@@ -32,7 +31,7 @@ public final class LoginAppParamInterceptor extends BasicParamsIntercptor {
     protected HashMap<String, String> getParamsMap() {
         HashMap<String, String> basicParamsMap = new HashMap<>();
         basicParamsMap.put(ParamsKey.APP_VERSION, AppUtils.getAppVersionName());
-        basicParamsMap.put(ParamsKey.SYSTEM_VERSION, android.os.Build.VERSION.RELEASE);
+        basicParamsMap.put(ParamsKey.SYSTEM_VERSION, Build.VERSION.RELEASE);
         basicParamsMap.put(ParamsKey.BRAND, Build.BRAND);
         basicParamsMap.put(ParamsKey.MODEL, Build.MODEL);
         basicParamsMap.put(ParamsKey.SYSTEM, SYSTEM_ANDROID);

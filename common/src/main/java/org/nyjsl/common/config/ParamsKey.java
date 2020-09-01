@@ -1,4 +1,4 @@
-package org.nyjsl.theme;
+package org.nyjsl.common.config;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,6 +1,7 @@
+include ':home'
 include ':network'
 include ':jetpack'
-include ':theme'
+include ':common'
 include ':login'
 include ':app'
 rootProject.name = "MVVM"

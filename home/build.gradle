@@ -25,7 +25,7 @@ android {
         }
     }
 
-    resourcePrefix "login_"
+    resourcePrefix "home_"
 
     buildTypes {
         release {

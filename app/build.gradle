@@ -1,5 +1,6 @@
 if (isRunAlone.toBoolean()) {
     apply plugin: 'com.starter.application.android'
+    apply plugin: 'WMRouter'
 } else {
     apply plugin: 'com.starter.library.android'
 }
@@ -42,7 +43,8 @@ apply from: '../config.gradle'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':theme')
-    implementation project(':network')
+    implementation project(path: ':common')
+    annotationProcessor deps.roomCompiler
+    annotationProcessor deps.vmRouterCompiler
 
 }

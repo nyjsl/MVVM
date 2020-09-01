@@ -1,9 +1,9 @@
-package org.nyjsl;
+package org.nyjsl.common.config;
+
 
 import com.tencent.mmkv.MMKV;
 
 import org.nyjsl.network.interceptors.AuthInterceptor;
-import org.nyjsl.theme.ParamsKey;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
  * @author : weixing
  * @date : 2020/8/31 4:58 PM
  */
-public final class LoginAuthInterceptor extends AuthInterceptor {
+public final class CommonAuthInterceptor extends AuthInterceptor {
     @NonNull
     @Override
     protected HashMap<String, String> getAuthHeaderMap() {
