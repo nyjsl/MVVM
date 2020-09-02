@@ -32,10 +32,10 @@ public final class RepoViewModelFactory extends ViewModelProvider.NewInstanceFac
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (AndroidViewModel.class.isAssignableFrom(modelClass)) {
+        if (ViewModel.class.isAssignableFrom(modelClass)) {
             //noinspection TryWithIdenticalCatches
             try {
-                return modelClass.getConstructor(Application.class).newInstance(baseRepository);
+                return modelClass.getConstructor(BaseRepository.class).newInstance(baseRepository);
             } catch (NoSuchMethodException e) {
                 throw new RuntimeException("Cannot create an instance of " + modelClass, e);
             } catch (IllegalAccessException e) {
