@@ -21,14 +21,21 @@ public abstract class BaseNoVMActivity<DataBinding extends ViewDataBinding> exte
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int layoutId = getLayoutId();
-        setContentView(layoutId);
-        dataBinding = initDataBinding(layoutId);
+        initDataBinding();
+        initView();
+        initData();
+    }
+
+    private void initDataBinding() {
+        dataBinding = initDataBinding(getLayoutId());
         if (null != dataBinding) {
             setModel();
         }
-        initView();
-        initData();
+    }
+
+    @Override
+    protected boolean useDataBingding() {
+        return true;
     }
 
     protected abstract void initData();
@@ -39,9 +46,4 @@ public abstract class BaseNoVMActivity<DataBinding extends ViewDataBinding> exte
         return DataBindingUtil.setContentView(this, layoutId);
     }
 
-    /**
-     * onCreate中返回布局ID
-     * @return
-     */
-    protected abstract @LayoutRes int getLayoutId();
 }
