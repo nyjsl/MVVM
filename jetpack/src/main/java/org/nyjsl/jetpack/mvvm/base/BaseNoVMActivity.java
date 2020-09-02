@@ -2,11 +2,7 @@ package org.nyjsl.jetpack.mvvm.base;
 
 import android.os.Bundle;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-
-import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 

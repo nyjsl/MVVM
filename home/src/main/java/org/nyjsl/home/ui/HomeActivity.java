@@ -2,7 +2,8 @@ package org.nyjsl.home.ui;
 
 import android.os.Bundle;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
+
+import com.sankuai.waimai.router.annotation.RouterUri;
 
 import org.nyjsl.common.router.RouterPath;
 import org.nyjsl.home.R;
@@ -10,7 +11,7 @@ import org.nyjsl.jetpack.mvvm.base.BaseActivity;
 
 import androidx.annotation.NonNull;
 
-@Route(path = RouterPath.HOME.HOME_ACT)
+@RouterUri(path = RouterPath.HOME.HOME_ACT)
 public class HomeActivity extends BaseActivity {
 
     @Override

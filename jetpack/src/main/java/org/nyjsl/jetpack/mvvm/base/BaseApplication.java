@@ -2,8 +2,11 @@ package org.nyjsl.jetpack.mvvm.base;
 
 import android.app.Application;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
+import com.sankuai.waimai.router.Router;
+import com.sankuai.waimai.router.common.DefaultRootUriHandler;
+import com.sankuai.waimai.router.components.DefaultLogger;
+import com.sankuai.waimai.router.core.Debugger;
 import com.tencent.mmkv.MMKV;
 
 import org.nyjsl.network.retrofit.RetrofitConfig;
@@ -24,20 +27,15 @@ public abstract class BaseApplication extends Application {
         Utils.init(this);
         MMKV.initialize(this);
         initRetrofitManager();
-        initARouter();
+        initVMRouter();
         initLogger(isDebug());
     }
 
-    private void initARouter() {
-        if (isDebug()) {
-            // 打印日志
-            ARouter.openLog();
-            // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-            ARouter.openDebug();
-        }
-        // 尽可能早，推荐在Application中初始化
-        ARouter.init(this);
-
+    private void initVMRouter() {
+        // 创建RootHandler
+        DefaultRootUriHandler rootHandler = new DefaultRootUriHandler(this);
+        // 初始化
+        Router.init(rootHandler);
     }
 
     protected void initRetrofitManager(){
@@ -46,8 +44,28 @@ public abstract class BaseApplication extends Application {
 
     private void initLogger(boolean debug){
         if (debug) {
-
+            setWMLogger();
         }
+    }
+
+    /**
+     * WMRouter 的Log
+     */
+    private void setWMLogger() {
+        // 自定义Logger
+        DefaultLogger logger = new DefaultLogger() {
+            @Override
+            protected void handleError(Throwable t) {
+                super.handleError(t);
+            }
+        };
+        // 设置Logger
+        Debugger.setLogger(logger);
+        // Log开关，建议测试环境下开启，方便排查问题。
+        Debugger.setEnableLog(true);
+
+        // 调试开关，建议测试环境下开启。调试模式下，严重问题直接抛异常，及时暴漏出来。
+        Debugger.setEnableDebug(true);
     }
 
     protected abstract boolean isDebug();

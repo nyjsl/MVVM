@@ -5,16 +5,14 @@ import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.sankuai.waimai.router.annotation.RouterUri;
 
 import org.nyjsl.common.router.RouterPath;
-import org.nyjsl.home.ui.HomeActivity;
 import org.nyjsl.jetpack.mvvm.base.BaseNoVMActivity;
 import org.nyjsl.login.R;
 import org.nyjsl.login.databinding.LoginActivityLoginBindingImpl;
 
-@Route(path = RouterPath.Login.LOGIN_ACT)
+@RouterUri(path = RouterPath.Login.LOGIN_ACT)
 public class LoginActivity extends BaseNoVMActivity<LoginActivityLoginBindingImpl> {
 
     @Override
@@ -39,7 +37,7 @@ public class LoginActivity extends BaseNoVMActivity<LoginActivityLoginBindingImp
     }
 
     public void goHome() {
-        ARouter.getInstance().build(RouterPath.HOME.HOME_ACT).navigation();
+        startUri(this,RouterPath.HOME.HOME_ACT);
     }
 
 

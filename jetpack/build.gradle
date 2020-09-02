@@ -38,7 +38,7 @@ dependencies {
     api deps.rxjava2
     api deps.rxAndroid
     api deps.mmkv
-    api deps.aRouter
+    api deps.wmRouter
     api project(path: ':network')
 
 

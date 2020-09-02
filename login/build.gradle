@@ -1,15 +1,11 @@
 if (isRunAlone.toBoolean()) {
     apply plugin: 'com.starter.application.android'
+    apply plugin: 'WMRouter'
 } else {
     apply plugin: 'com.starter.library.android'
 }
 
 apply plugin: 'kotlin-kapt'
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
 
 android {
 
@@ -55,7 +51,7 @@ dependencies {
     implementation project(path: ':common')
     implementation project(path: ':home')
     kapt deps.roomCompiler
-    kapt deps.aRouterCompiler
+    kapt deps.wmRouterCompiler
 
 
 }

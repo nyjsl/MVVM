@@ -11,8 +11,7 @@ ext.versions = [
         room                     : '2.2.5',
         okhttp3Logging           : '3.8.0',
         mmkv                     : '1.2.2',
-        aRouter                  : '1.5.0',
-        aRouterCompiler          : '1.2.2',
+        wmRouter                 : '1.2.0',
 
 
 ]
@@ -36,8 +35,8 @@ ext.deps = [
         roomCompiler       :"androidx.room:room-compiler:$versions.room",
         okhttp3Logging      : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3Logging",
         mmkv                : "com.tencent:mmkv-static:$versions.mmkv",
-        aRouter            : "com.alibaba:arouter-api:$versions.aRouter",
-        aRouterCompiler     : "com.alibaba:arouter-compiler:$versions.aRouterCompiler",
+        wmRouter            : "com.sankuai.waimai.router:router:$versions.wmRouter",
+        wmRouterCompiler     : "com.sankuai.waimai.router:compiler:$versions.wmRouter",
 
 
 
