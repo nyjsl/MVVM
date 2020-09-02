@@ -2,6 +2,7 @@ package org.nyjsl.jetpack.mvvm.base.lifecycle;
 
 import org.nyjsl.network.repository.BaseRepository;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
@@ -14,7 +15,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseViewModel extends ViewModel {
 
 
-    public BaseViewModel(BaseRepository repository) {
+    public BaseViewModel(@NonNull BaseRepository repository) {
         this.repository = repository;
     }
 

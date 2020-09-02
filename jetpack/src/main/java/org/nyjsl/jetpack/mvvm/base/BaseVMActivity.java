@@ -38,7 +38,6 @@ extends BaseNoVMActivity<DataBinding>{
     }
 
     private Class<VM> getViewModelClass(){
-        //TODO 需要验证
         ParameterizedType parametclass = (ParameterizedType) this.getClass().getGenericSuperclass();
         Type[] actualTypeArguments = parametclass.getActualTypeArguments();
         Class<VM> result = (Class<VM>) actualTypeArguments[0];

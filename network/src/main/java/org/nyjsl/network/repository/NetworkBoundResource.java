@@ -44,9 +44,16 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     private AppExecutors appExecutors;
     private MediatorLiveData<Resource<ResultType>> result = new MediatorLiveData<>();
 
+    protected final String TAG;
+
+    public String getTAG() {
+        return TAG;
+    }
+
     @MainThread
-    public NetworkBoundResource(AppExecutors appExecutors) {
-        this.appExecutors = appExecutors;
+    public NetworkBoundResource() {
+        this.appExecutors = AppExecutors.getInstance();
+        TAG = this.getClass().getName();
 //        init();
     }
 

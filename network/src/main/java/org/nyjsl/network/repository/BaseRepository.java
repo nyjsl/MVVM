@@ -3,9 +3,12 @@ package org.nyjsl.network.repository;
 import org.nyjsl.network.AppExecutors;
 import org.nyjsl.network.util.RateLimiter;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -14,25 +17,18 @@ import androidx.annotation.Nullable;
  */
 public abstract class BaseRepository<NetBundle extends NetworkBoundResource<ResultType, RequestType>, ResultType, RequestType> {
 
-    private Executor executor;
 
-    private final NetBundle repo ;
+    private final HashMap<String,NetBundle> realRepos ;
 
     private static final int TIME_OUT = 10;
 
     protected final RateLimiter repoListRateLimit = new RateLimiter<String>(TIME_OUT, TimeUnit.MINUTES);
 
-    public BaseRepository(@Nullable Executor executor) {
-        this.executor = executor;
-        this.repo = createRepo();
-    }
-
     public BaseRepository() {
-        executor = AppExecutors.getInstance().networkIO();
-        this.repo = createRepo();
+        this.realRepos = createRepo();
     }
 
-    protected abstract NetBundle createRepo();
+    protected abstract @NonNull HashMap<String,NetBundle> createRepo();
 
 
 }
