@@ -2,6 +2,7 @@ package org.nyjsl.jetpack.mvvm.base;
 
 import android.app.Application;
 
+import com.blankj.utilcode.util.ApiUtils;
 import com.blankj.utilcode.util.Utils;
 import com.sankuai.waimai.router.Router;
 import com.sankuai.waimai.router.common.DefaultRootUriHandler;
@@ -40,7 +41,10 @@ public abstract class BaseApplication extends Application {
 
     protected void initRetrofitManager(){
         RetrofitManager.getInstance().init(getRetrofConfig());
+        initBaseApi();
     }
+
+    protected abstract void initBaseApi();
 
     private void initLogger(boolean debug){
         if (debug) {

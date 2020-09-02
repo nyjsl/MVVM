@@ -1,4 +1,4 @@
-package org.nyjsl.common.config;
+package org.nyjsl.common.api.config;
 
 import android.os.Build;
 

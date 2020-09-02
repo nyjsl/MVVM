@@ -1,4 +1,4 @@
-package org.nyjsl.common.config;
+package org.nyjsl.common.api.config;
 
 import org.nyjsl.network.interceptors.JsonContentTypeInterceptor;
 import org.nyjsl.network.retrofit.RetrofitConfig;

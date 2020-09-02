@@ -1,7 +1,5 @@
 package org.nyjsl.network.retrofit;
 
-import android.util.ArrayMap;
-
 import com.blankj.utilcode.util.ObjectUtils;
 import org.nyjsl.network.util.LiveDataCallAdapterFactory;
 

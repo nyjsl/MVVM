@@ -42,6 +42,31 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+
+    flavorDimensions "default"
+    productFlavors {
+        // 开发
+        dev {
+            buildConfigField 'String', 'HOST_USER', '"http://devapi.xiaoliancloud.com/m/"'
+        }
+        // 测试
+        qa {
+            buildConfigField 'String', 'HOST_USER', '"http://testapi.xiaoliancloud.com/m/"'
+        }
+        // 预发
+        pre{
+            buildConfigField 'String', 'HOST_USER', '"https://preapi.xiaolianhb.com/m/"'
+        }
+        //正式
+        prod {
+            buildConfigField 'String', 'HOST_USER', '"https://api.xiaolianhb.com/m/"'
+        }
+        //正式 hw api
+        hw {
+            buildConfigField 'String', 'HOST_USER', '"https://hwapi.xiaoliancloud.com/m/"'
+        }
+    }
 }
 
 apply from: '../config.gradle'
