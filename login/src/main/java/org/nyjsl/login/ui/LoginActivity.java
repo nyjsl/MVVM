@@ -2,12 +2,14 @@ package org.nyjsl.login.ui;
 
 import androidx.annotation.NonNull;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
 import org.nyjsl.common.router.RouterPath;
+import org.nyjsl.home.ui.HomeActivity;
 import org.nyjsl.jetpack.mvvm.base.BaseNoVMActivity;
 import org.nyjsl.login.R;
 import org.nyjsl.login.databinding.LoginActivityLoginBindingImpl;

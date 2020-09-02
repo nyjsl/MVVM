@@ -1,4 +1,5 @@
 apply plugin: 'com.starter.library.android'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -36,6 +37,7 @@ dependencies {
     api deps.retrofitConverterGson
     api deps.okhttp3Logging
     api deps.room
-    annotationProcessor deps.roomCompiler
+    kapt deps.roomCompiler
+
 
 }
