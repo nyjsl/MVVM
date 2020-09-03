@@ -1,6 +1,8 @@
 package org.nyjsl.common.api.config;
 
 
+import android.text.TextUtils;
+
 import com.tencent.mmkv.MMKV;
 
 import org.nyjsl.network.interceptors.AuthInterceptor;
@@ -20,9 +22,13 @@ public final class CommonAuthInterceptor extends AuthInterceptor {
     protected HashMap<String, String> getAuthHeaderMap() {
         HashMap<String,String> tokenMap = new HashMap<>(2);
         String acccessToken = MMKV.defaultMMKV().decodeString(ParamsKey.ACCESS_TOKEN);
-        tokenMap.put(ParamsKey.ACCESS_TOKEN, acccessToken);
+        if (!TextUtils.isEmpty(acccessToken)) {
+            tokenMap.put(ParamsKey.ACCESS_TOKEN, acccessToken);
+        }
         String refreshToken = MMKV.defaultMMKV().decodeString(ParamsKey.REFRESH_TOKEN);
-        tokenMap.put(ParamsKey.REFRESH_TOKEN, refreshToken);
+        if (!TextUtils.isEmpty(refreshToken)) {
+            tokenMap.put(ParamsKey.REFRESH_TOKEN, refreshToken);
+        }
         return tokenMap;
     }
 
