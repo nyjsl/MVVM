@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="androidx.lifecycle.LiveData"></import>
+        <import type="org.nyjsl.network.vo.Resource"></import>
+        <import type="org.nyjsl.common.entity.login.User"></import>
+
         <variable
             name="model"
             type="org.nyjsl.login.ui.LoginActivity"></variable>
+        <variable
+            name="data"
+            type="LiveData&lt;Resource&lt;User>>">
+        </variable>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,17 +30,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></EditText>
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{model.viewModel.name}"
+            android:hint="请输入用户名"></EditText>
+        <EditText
+            android:id="@+id/pwd_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_edt"
+            android:text="@{model.viewModel.pwd}"
+            android:hint="请输入密码"></EditText>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_edt"
+            app:layout_constraintTop_toBottomOf="@id/pwd_edt"
             android:text="登录"
             android:layout_marginTop="10dp"
-            android:onClick="@{(thisView) -> model.goHome()}"></Button>
+            android:onClick="@{(thisView) -> model.viewModel.login()}"></Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

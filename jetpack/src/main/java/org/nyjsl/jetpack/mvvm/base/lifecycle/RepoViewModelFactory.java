@@ -1,32 +1,30 @@
 package org.nyjsl.jetpack.mvvm.base.lifecycle;
 
-import android.app.Application;
 
 import org.nyjsl.network.repository.BaseRepository;
 
 import java.lang.reflect.InvocationTargetException;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public final class RepoViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public final class RepoViewModelFactory<R extends BaseRepository> extends ViewModelProvider.NewInstanceFactory {
 
     private static RepoViewModelFactory sInstance;
 
     @NonNull
-    public static RepoViewModelFactory getInstance(@NonNull BaseRepository baseRepository) {
+    public static <R extends BaseRepository> RepoViewModelFactory getInstance(@NonNull R repository) {
         if (sInstance == null) {
-            sInstance = new RepoViewModelFactory(baseRepository);
+            sInstance = new RepoViewModelFactory(repository);
         }
         return sInstance;
     }
 
-    private BaseRepository baseRepository;
+    private R repository;
 
-    public RepoViewModelFactory(@NonNull BaseRepository baseRepository) {
-        this.baseRepository = baseRepository;
+    public RepoViewModelFactory(@NonNull R repository) {
+        this.repository = repository;
     }
 
     @NonNull
@@ -35,7 +33,7 @@ public final class RepoViewModelFactory extends ViewModelProvider.NewInstanceFac
         if (ViewModel.class.isAssignableFrom(modelClass)) {
             //noinspection TryWithIdenticalCatches
             try {
-                return modelClass.getConstructor(BaseRepository.class).newInstance(baseRepository);
+                return modelClass.getConstructor(repository.getClass()).newInstance(repository);
             } catch (NoSuchMethodException e) {
                 throw new RuntimeException("Cannot create an instance of " + modelClass, e);
             } catch (IllegalAccessException e) {

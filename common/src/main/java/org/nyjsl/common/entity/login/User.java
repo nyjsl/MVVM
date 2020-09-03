@@ -1,5 +1,6 @@
 package org.nyjsl.common.entity.login;
 
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +8,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class User {
     @PrimaryKey
-    public String id;
+    @NonNull
+    public  String id;
     public String pictureUrl;
     public String nickName;
     public Integer sex;
@@ -32,9 +34,9 @@ public class User {
     public String cusRobotUrl;
     public String problemBaseUrl;
     public String exclusiveCusUrl;
-    @Embedded
+    @Embedded(prefix = "ali")
     public AliInfo alipayBinding;
-    @Embedded
+    @Embedded(prefix = "wechat")
     public WechatInfo wechatUserInfo;
 }
     

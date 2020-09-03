@@ -10,7 +10,6 @@ import org.nyjsl.common.db.DbFactory;
 import org.nyjsl.common.db.dao.UserDao;
 import org.nyjsl.common.service.IDbService;
 
-import androidx.room.Room;
 
 /**
  * @author : weixing

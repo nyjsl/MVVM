@@ -30,7 +30,7 @@ public class RateLimiter<KEY> {
         this.timeout = timeUnit.toMillis(timeout);
     }
 
-    public  synchronized Boolean shouldFetch(KEY key) {
+    public synchronized Boolean shouldFetch(KEY key) {
         Long lastFetched = timestamps.get(key);
         Long now = now();
         if (lastFetched == null) {

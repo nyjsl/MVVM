@@ -54,7 +54,6 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     public NetworkBoundResource() {
         this.appExecutors = AppExecutors.getInstance();
         TAG = this.getClass().getName();
-//        init();
     }
 
     private void init() {

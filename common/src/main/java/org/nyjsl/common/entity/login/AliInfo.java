@@ -1,5 +1,7 @@
 package org.nyjsl.common.entity.login;
 
+import androidx.room.Entity;
+
 /**
  * @author : weixing
  * @date : 2020/9/2 4:19 PM

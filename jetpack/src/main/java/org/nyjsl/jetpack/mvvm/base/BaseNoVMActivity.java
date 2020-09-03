@@ -12,7 +12,7 @@ import androidx.databinding.ViewDataBinding;
  */
 public abstract class BaseNoVMActivity<DataBinding extends ViewDataBinding> extends BaseActivity {
 
-    protected DataBinding dataBinding;
+    protected DataBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,11 +23,15 @@ public abstract class BaseNoVMActivity<DataBinding extends ViewDataBinding> exte
     }
 
     private void initDataBinding() {
-        dataBinding = initDataBinding(getLayoutId());
-        if (null != dataBinding) {
+        binding = initDataBinding(getLayoutId());
+        if (null != binding) {
+            binding.setLifecycleOwner(this);
             setModel();
+            setData();
         }
     }
+
+    protected abstract void setData();
 
     @Override
     protected boolean useDataBingding() {

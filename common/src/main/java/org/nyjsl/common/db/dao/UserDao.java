@@ -21,6 +21,8 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE id= :id")
     LiveData<User> getByid(String id);
+    @Query("SELECT * FROM user WHERE mobile= :mobile")
+    LiveData<User> getByMobile(String mobile);
 
     @Delete
     void delete(User user);

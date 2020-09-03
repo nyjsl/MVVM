@@ -1,15 +1,11 @@
 package org.nyjsl.network.repository;
 
-import org.nyjsl.network.AppExecutors;
 import org.nyjsl.network.util.RateLimiter;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * @author : weixing
@@ -20,9 +16,13 @@ public abstract class BaseRepository<NetBundle extends NetworkBoundResource<Resu
 
     private final HashMap<String,NetBundle> realRepos ;
 
+    protected HashMap<String, NetBundle> getRealRepos() {
+        return realRepos;
+    }
+
     private static final int TIME_OUT = 10;
 
-    protected final RateLimiter repoListRateLimit = new RateLimiter<String>(TIME_OUT, TimeUnit.MINUTES);
+    protected final RateLimiter rateLimiter = new RateLimiter<String>(TIME_OUT, TimeUnit.MINUTES);
 
     public BaseRepository() {
         this.realRepos = createRepo();

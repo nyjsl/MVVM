@@ -12,10 +12,10 @@ import io.reactivex.disposables.Disposable;
  * @author : weixing
  * @date : 2020/8/30 1:51 PM
  */
-public abstract class BaseViewModel extends ViewModel {
+public abstract class BaseViewModel<R extends BaseRepository> extends ViewModel {
 
 
-    public BaseViewModel(@NonNull BaseRepository repository) {
+    public BaseViewModel(@NonNull R repository) {
         this.repository = repository;
     }
 
@@ -46,7 +46,7 @@ public abstract class BaseViewModel extends ViewModel {
         }
     }
 
-    private final BaseRepository repository;
+    protected final R repository;
 
 
 
