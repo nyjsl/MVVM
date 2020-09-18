@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         if (isRunAlone.toBoolean()) {
-            applicationId "org.nyjsl.zeus"
+            applicationId "org.nyjsl.demo"
         }
         versionCode 1
     }
