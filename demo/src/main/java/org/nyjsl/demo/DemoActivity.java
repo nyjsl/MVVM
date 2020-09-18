@@ -3,6 +3,7 @@ package org.nyjsl.demo;
 
 
 import org.nyjsl.demo.bean.DemoBean;
+import org.nyjsl.demo.bean.DiBen;
 import org.nyjsl.demo.databinding.DemoActivityDemoBinding;
 import org.nyjsl.jetpack.mvvm.base.BaseNoVMActivity;
 
@@ -26,13 +27,19 @@ import org.nyjsl.jetpack.mvvm.base.BaseNoVMActivity;
  *
  *
  *  空合并操作符
+ *
+ *
+ *  双向绑定比单向绑定多一个=号
  */
 public class DemoActivity extends BaseNoVMActivity<DemoActivityDemoBinding> {
 
     private DemoBean db = new DemoBean();
+    private DiBen dd = new DiBen();
 
     @Override
     protected void setData() {
+        binding.setDd(dd);
+        binding.setData(db);
     }
 
     @Override

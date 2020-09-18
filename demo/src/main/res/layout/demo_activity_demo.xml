@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
 
         <import type="org.nyjsl.demo.bean.DemoBean"></import>
+        <import type="org.nyjsl.demo.bean.DiBen"></import>
         <import type="android.view.View"></import>
 
         <variable
@@ -15,6 +18,9 @@
         <variable
             name="data"
             type="DemoBean"></variable>
+        <variable
+            name="dd"
+            type="DiBen"></variable>
     </data>
 
     <ScrollView
@@ -30,8 +36,16 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/colorAccent"
                 android:layout_height="wrap_content"
-                android:text="@{data.name+String.valueOf(data.index+1)}"
+                android:text="@{dd.data+String.valueOf(data.index+1)}"
                 android:visibility="@{data.age>5 ? View.VISIBLE:View.GONE}">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/colorAccent"
+                android:layout_height="wrap_content"
+                android:text="@{data.name ?? String.valueOf(data.age)}">
 
             </TextView>
 
@@ -45,6 +59,18 @@
                 android:layout_height="wrap_content"
                 android:text="减少"
                 android:onClick="@{(thisView) ->model.decrease()}"></Button>
+<!--            注意双向绑定比单向绑定多一个=号-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={dd.data}">
+
+            </EditText>
+
+
+            <include
+                layout="@layout/demo_included"
+                bind:aa="@{data}"></include>
 
         </LinearLayout>
 
