@@ -1,0 +1,53 @@
+if (isRunAlone.toBoolean()) {
+    apply plugin: 'com.starter.application.android'
+    apply plugin: 'WMRouter'
+} else {
+    apply plugin: 'com.starter.library.android'
+}
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    defaultConfig {
+        if (isRunAlone.toBoolean()) {
+            applicationId "org.nyjsl.zeus"
+        }
+        versionCode 1
+    }
+
+    sourceSets {
+        main {
+            if (isRunAlone.toBoolean()) {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+    resourcePrefix "demo_"
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+apply from: '../config.gradle'
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':common')
+    kapt deps.roomCompiler
+    kapt deps.wmRouterCompiler
+
+}
