@@ -28,7 +28,7 @@ import androidx.annotation.NonNull;
  *
  *    在Lifecycle面世前,生命周期管理,纯靠手工维持,这样容易滋生大量的一致性问题
  *
- *    大量根声明周期相关的代码分散在不同Activity中,埋下的隐患随指数级增长
+ *    大量跟声明周期相关的代码分散在不同Activity中,埋下的隐患随指数级增长
  *    代码分散,修改维护都不方便
  *
  *    Lifecycle通过模块方法和观察者模式,将生命周期管理的复杂操作,全部作为LifecycleOwner
@@ -83,7 +83,7 @@ import androidx.annotation.NonNull;
  *    the other Fragment directly.
  *
  *    ViewModel如何做到这几点?
- *     得益于工长模式,是的ViewModel被LifecycleOwner持有,通过ViewModelProvider来引用
+ *     得益于工厂模式,是的ViewModel被LifecycleOwner持有,通过ViewModelProvider来引用
  *    既类似于单例,实际上又不是单例
  *
  * Jetpack DataBinding
